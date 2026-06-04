@@ -5,9 +5,7 @@ import com.example.sorting.algorithms.SortingAlgorithms;
 import java.util.Random;
 import java.util.function.Function;
 
-/**
- * Benchmarks sorting algorithms by measuring their execution time.
- */
+
 public class SortBenchmark {
 
     public record BenchmarkResult(String algorithm, int arraySize, long microseconds) {
@@ -17,19 +15,19 @@ public class SortBenchmark {
         }
     }
 
-    /** Generate a random int array of given size */
+
     public static int[] randomArray(int size) {
-        Random rnd = new Random(42); // fixed seed for reproducible results
+        Random rnd = new Random(42); 
         int[] arr = new int[size];
         for (int i = 0; i < size; i++) arr[i] = rnd.nextInt(10_000);
         return arr;
     }
 
-    /** Generate a nearly-sorted array (best case for insertion sort) */
+   
     public static int[] nearlySortedArray(int size) {
         int[] arr = new int[size];
         for (int i = 0; i < size; i++) arr[i] = i;
-        // Swap a few random pairs
+      
         Random rnd = new Random(42);
         for (int i = 0; i < size / 20; i++) {
             int a = rnd.nextInt(size);
@@ -39,7 +37,7 @@ public class SortBenchmark {
         return arr;
     }
 
-    /** Measure execution time of a sorting function in microseconds */
+   
     public static BenchmarkResult measure(String name, Function<int[], int[]> sortFn, int[] arr) {
         long start = System.nanoTime();
         sortFn.apply(arr);
@@ -48,7 +46,7 @@ public class SortBenchmark {
         return new BenchmarkResult(name, arr.length, micros);
     }
 
-    /** Run all algorithms on the same dataset and print comparison */
+   
     public static void runAll(int size, String dataType) {
         int[] data = dataType.equals("nearly-sorted") ? nearlySortedArray(size) : randomArray(size);
 
