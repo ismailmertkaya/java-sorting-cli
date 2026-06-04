@@ -6,9 +6,7 @@ import com.example.sorting.benchmark.SortBenchmark;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/**
- * Interactive CLI — lets the user pick an algorithm and see it in action.
- */
+
 public class SortingCLI {
 
     public static void main(String[] args) {
